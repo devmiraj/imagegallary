@@ -1,4 +1,5 @@
 import React, { createContext,useEffect,useState } from 'react'
+import { reducer } from './reducer';
 export const ImageContext = createContext();
 
 const ImageContextProvider = props => {
@@ -10,8 +11,7 @@ const ImageContextProvider = props => {
     }
     useEffect(async () => {
         const  imagesArray = await getImages();
-        setimages(imagesArray)
-        
+        await setimages(imagesArray)
     }, [])
     return (    
         <ImageContext.Provider value={{images}}>
