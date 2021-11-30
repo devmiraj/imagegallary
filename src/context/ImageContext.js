@@ -1,9 +1,18 @@
 import React, { createContext,useEffect,useState } from 'react'
-import { reducer } from './reducer';
 export const ImageContext = createContext();
+
+const Reducer = (action,state) => {
+    switch (action.type) {
+        case "DELETE_CLIENT":
+            console.log('sdsdsds',state);
+        default:
+            return 'images';
+    }
+};
 
 const ImageContextProvider = props => {
     const [images, setimages] = useState([])
+
     async function getImages() {
         let response = await fetch(`${process.env.REACT_APP_API_URL}/photos?per_page=20&client_id=${process.env.REACT_APP_API_KEY}`);
         let data = await response.json();
@@ -14,7 +23,11 @@ const ImageContextProvider = props => {
         await setimages(imagesArray)
     }, [])
     return (    
-        <ImageContext.Provider value={{images}}>
+        <ImageContext.Provider value={{
+            images,
+            Reducer
+
+            }}>
             {props.children}
         </ImageContext.Provider>
     )

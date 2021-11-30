@@ -11,6 +11,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -102,7 +103,13 @@ const Header = () => {
               </Button>
             ))}
           </Box>
-
+          <Box>
+            <Tooltip title="Open settings">
+              <IconButton style={{color: 'white'}}>
+                <FavoriteBorderIcon/>      
+              </IconButton>
+            </Tooltip>
+          </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

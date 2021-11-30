@@ -5,8 +5,7 @@ import FileDownloadIcon from '@mui/icons-material/FileDownload';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import DataObjectIcon from '@mui/icons-material/DataObject';
 const Imageslist = () => {
-    const {images} = useContext(ImageContext);
-    console.log(images)
+    const {images,Reducer} = useContext(ImageContext);
     return images.length ? (
         images.map((image,index) =>{
             return (
@@ -36,7 +35,7 @@ const Imageslist = () => {
                                     <FavoriteBorderIcon/>        
                                 </IconButton>
                                 {/* onClick={() => dispatch({type: 'changeTheme'})} */}
-                                <IconButton aria-label="Details" >
+                                <IconButton aria-label="Details" onClick={() => Reducer({type:'DELETE_CLIENT'})}>
                                     <DataObjectIcon/>        
                                 </IconButton>
                             </div>
